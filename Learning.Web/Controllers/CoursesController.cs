@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Routing;
 
 namespace Learning.Web.Controllers
 {
- 
+
+    [EnableCors(origins: "http://localhost:61706", headers: "*", methods: "*")]
     public class CoursesController : BaseApiController
     {
         

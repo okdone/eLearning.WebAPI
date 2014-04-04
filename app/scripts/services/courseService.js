@@ -2,9 +2,9 @@
     return {
         getCourses: function () {
             var deferred = $q.defer();
-            $http.get(app.apiURL + '/api/courses').success(function (data) {
+            $http({method:'GET', url: app.apiURL + '/api/courses'}).success(function (data) {
                 deferred.resolve(data);
-            }).error(function (data,status) { deferred.reject({ error: data }); });;
+            }).error(function (data, status) { console.log(status); deferred.reject(status); });;
             return deferred.promise;
         },
         addCourse: function (course) {

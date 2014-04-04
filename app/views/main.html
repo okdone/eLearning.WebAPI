@@ -7,15 +7,68 @@
   <h3 class="text-muted">eLearning WebAPI</h3>
 </div>
 
-<div class="jumbotron">
-<div ng-repeat='crs in courses.Results'>
-        {{crs.Name}} <a class="btn btn-lg btn-success" ng-href="#">Splendid!</a>
-</div>
-</div>
-<div class="row marketing">
 
+<div class="row">
+    <table>
+    <tr>
+
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Url</th>
+                    <th>Duration</th>
+                    <th>Description</th>
+                            <th style="width: 100px;">
+                        <div class="btn-toolbar"><i class="btn icon-plus" ng-click="toggleAddMode()"></i></div>
+                    </th>
+                </tr>
+                <tr ng-show="addMode">
+                    <td>
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <i class="btn icon-save" ng-click="addCourse()"></i>
+                                <i class="btn icon-remove" ng-click="toggleAddMode()"></i>
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <input ng-model="crs.name" /></td>
+                </tr>
+        <tr ng-repeat='crs in courses.results'>
+        <td>{{crs.id}}</td>
+            <td>
+                <app-form  check="crs.editMode" itm-model="crs.name"></app-form>
+            </td>
+            <td>
+                <span ng-show="crs.editMode == null || crs.editMode == false">{{crs.url}}</span>
+                <input ng-model="crs.url" ng-show="crs.editMode == true" />
+            </td>
+            <td>
+                <span ng-show="crs.editMode == null || crs.editMode == false">{{crs.duration}}</span>
+                <input ng-model="crs.duration" ng-show="crs.editMode == true" />
+            </td>
+            <td>
+                <span ng-show="crs.editMode == null || crs.editMode == false">{{crs.description}}</span>
+                <input ng-model="crs.description" ng-show="crs.editMode == true" />
+            </td>
+           <td><div class="btn-toolbar" ng-show="crs.editMode == null || crs.editMode == false">
+                            <div class="btn-group">
+                                <i class="btn btn-primary" ng-click="toggleEditMode(crs)">Edit</i>
+                                <i class="btn btn-danger" ng-click="deletecrs(crs)">Delete</i>
+                            </div>
+                        </div>
+                        <div class="btn-toolbar" ng-show="crs.editMode == true">
+                            <div class="btn-group">
+                                <i class="btn btn-success" ng-click="updatecrs(crs)">Save</i>
+                                <i class="btn btn-primary" ng-click="toggleEditMode(crs)">Cancel</i>
+                            </div>
+                        </div>
+
+           </td>
+        </tr>
+        </table>
 </div>
 
 <div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <p>@Copyright</p>
 </div>

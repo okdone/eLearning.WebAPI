@@ -64,7 +64,7 @@ namespace Learning.Web
             //var cacheCowCacheHandler = new CacheCow.Server.CachingHandler(eTagStore);
             //cacheCowCacheHandler.AddLastModifiedHeader = false;
             //config.MessageHandlers.Add(cacheCowCacheHandler);
-
+            config.EnableCors();
 
 #if !DEBUG
             //force HTTPs
